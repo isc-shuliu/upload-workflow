@@ -15,8 +15,8 @@ jobs:
       - name: Set outputs
         id: set-output
         run: |
-          echo 'matrix=["iris-community:2023.1","iris-community:2024.1","iris-community:2024.2","iris-community:2024.3","iris-community:latest-preview","irishealth-community:2023.1","irishealth-community:2024.1","irishealth-community:2024.2","irishealth-community:2024.3","irishealth-community:latest-preview"]' >> $GITHUB_OUTPUT
-          echo 'target="iris-community:2023.1"' >> $GITHUB_OUTPUT
+          echo 'matrix=["iris-community2023.1","iris-community2024.1","iris-community2024.2","iris-community2024.3","iris-communitylatest-preview","irishealth-community2023.1","irishealth-community2024.1","irishealth-community2024.2","irishealth-community2024.3","irishealth-communitylatest-preview"]' >> $GITHUB_OUTPUT
+          echo 'target="iris-community2023.1"' >> $GITHUB_OUTPUT
 
   build:
     runs-on: ubuntu-latest

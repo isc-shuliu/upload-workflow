@@ -6,22 +6,36 @@ on:
       - main
 
 jobs:
+  prepare:
+    runs-on: ubuntu-latest
+    outputs:
+      matrix: ${{ steps.set-output.outputs.matrix }}
+      target: ${{ steps.set-output.outputs.target }}
+    steps:
+      - name: Set outputs
+        id: set-output
+        run: |
+          echo "matrix=[\"file1.txt\", \"file2.txt\", \"file3.txt\"]" >> $GITHUB_ENV
+          echo "target=file1.txt" >> $GITHUB_ENV
+
   build:
     runs-on: ubuntu-latest
+    needs:
+      - prepare
     strategy:
       matrix:
-        file-name: [file1.txt, file2.txt, file3.txt]
+        filename: ${{ fromJson(needs.prepare.outputs.matrix) }}
     
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
 
       - name: Create a file
-        run: echo "This is a dummy file for ${{ matrix.file-name }}" > ${{ matrix.file-name }}
+        run: echo "This is a dummy file for ${{ matrix.filename }}" > ${{ matrix.filename }}
 
       - name: Conditional Upload Artifact
-        if: matrix.file-name == 'file1.txt'
+        if: matrix.filename == needs.prepare.outputs.target
         uses: actions/upload-artifact@v4
         with:
-          name: ${{ matrix.file-name }}
-          path: ${{ matrix.file-name }}
+          name: ${{ matrix.filename }}
+          path: ${{ matrix.filename }}

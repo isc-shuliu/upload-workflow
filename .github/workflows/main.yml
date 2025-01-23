@@ -15,8 +15,8 @@ jobs:
       - name: Set outputs
         id: set-output
         run: |
-          echo 'matrix=["filename31","filename41"]' >> $GITHUB_OUTPUT
-          echo 'target="filename31"' >> $GITHUB_OUTPUT
+          echo 'matrix=["filename3.txt","filename4.txt"]' >> $GITHUB_OUTPUT
+          echo 'target="filename3.txt"' >> $GITHUB_OUTPUT
 
   build:
     runs-on: ubuntu-latest

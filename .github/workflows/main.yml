@@ -15,8 +15,8 @@ jobs:
       - name: Set outputs
         id: set-output
         run: |
-          echo 'matrix=["file1.txt","file2.txt","file3.txt"]' >> $GITHUB_OUTPUT
-          echo "target=file1.txt" >> $GITHUB_OUTPUT
+          echo 'matrix=["iris-community:2023.1","iris-community:2024.1","iris-community:2024.2","iris-community:2024.3","iris-community:latest-preview","irishealth-community:2023.1","irishealth-community:2024.1","irishealth-community:2024.2","irishealth-community:2024.3","irishealth-community:latest-preview"]' >> $GITHUB_OUTPUT
+          echo "target=iris-community:2023.1" >> $GITHUB_OUTPUT
 
   build:
     runs-on: ubuntu-latest

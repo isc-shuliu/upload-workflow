@@ -15,8 +15,8 @@ jobs:
       - name: Set outputs
         id: set-output
         run: |
-          echo 'matrix=["iriscommunity20231","iriscommunity20241"]' >> $GITHUB_OUTPUT
-          echo 'target="iriscommunity20231"' >> $GITHUB_OUTPUT
+          echo 'matrix=["filename31","filename41"]' >> $GITHUB_OUTPUT
+          echo 'target="filename31"' >> $GITHUB_OUTPUT
 
   build:
     runs-on: ubuntu-latest

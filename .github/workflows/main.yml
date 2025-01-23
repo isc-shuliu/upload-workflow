@@ -1,0 +1,27 @@
+name: Matrix File Creation with Conditional Upload
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        file-name: [file1.txt, file2.txt, file3.txt]
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Create a file
+        run: echo "This is a dummy file for ${{ matrix.file-name }}" > ${{ matrix.file-name }}
+
+      - name: Conditional Upload Artifact
+        if: matrix.file-name == 'file1.txt'
+        uses: actions/upload-artifact@v4
+        with:
+          name: ${{ matrix.file-name }}
+          path: ${{ matrix.file-name }}
